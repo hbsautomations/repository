@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-black: #000000;
+  --color-deep-purple: #2A0044;
+  --color-electric-purple: #8A2BE2;
+  --color-cyan: #00FFFF;
+  --color-neon-purple: #9D00FF;
+}
+
+body {
+  @apply font-sans text-white bg-hbs-black;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  overflow-x: hidden;
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at center, var(--color-deep-purple) 0%, var(--color-black) 70%);
+}
+
+.glassmorphism {
+  @apply backdrop-blur-md bg-opacity-20 bg-white border border-white border-opacity-10;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-cyan), var(--color-electric-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-gradient {
+  background: linear-gradient(to bottom, var(--color-black), var(--color-deep-purple), var(--color-black));
+  position: relative;
+  z-index: 10;
+}
+
+/* Particles canvas */
+.particles-container {
+  @apply fixed inset-0 -z-10;
+  pointer-events: none;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.accordion-content.show {
+  max-height: 1000px;
+  transition: max-height 1s ease-in-out;
+}
+
+.contact-form input,
+.contact-form textarea {
+  @apply w-full p-3 bg-transparent border border-hbs-electric-purple border-opacity-50 rounded-lg outline-none focus:border-hbs-cyan transition-all duration-300;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply px-4 sm:px-8 py-2 sm:py-3 bg-hbs-electric-purple hover:bg-hbs-neon-purple text-white rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg shadow-hbs-neon-purple/50;
+}
+
+.btn-secondary {
+  @apply px-4 sm:px-6 py-2 bg-transparent border-2 border-hbs-electric-purple hover:border-hbs-cyan text-white rounded-full transition-all duration-300 transform hover:scale-105;
+}
+
+/* Improved scrolling for sections */
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 80px; /* Increased to account for navbar height */
+  position: relative;
+  z-index: 10;
+}
+
+/* Prevent text wrapping in navbar */
+@media (max-width: 1024px) {
+  .hidden.md\:flex .text-xs {
+    font-size: 0.65rem;
+  }
+
+  .md\:flex.space-x-3 > * + * {
+    margin-left: 0.5rem;
+  }
+}
+
+/* Fix for mobile padding and spacing */
+@media (max-width: 640px) {
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1, h2, h3 {
+    word-break: break-word;
+  }
+}
+
+/* Fix for nav items spacing on different screen sizes */
+@media (min-width: 768px) and (max-width: 1100px) {
+  .hidden.md\:flex {
+    font-size: 0.85rem;
+  }
+  
+  .hidden.md\:flex.space-x-8 > * {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .btn-primary {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Styling for the legal pages */
+.prose {
+  @apply text-gray-300;
+}
+
+.prose h1, 
+.prose h2, 
+.prose h3, 
+.prose h4 {
+  @apply text-white;
+}
+
+.prose a {
+  @apply text-hbs-cyan hover:text-hbs-electric-purple transition-colors duration-300;
+}
+
+.prose ul {
+  @apply list-disc pl-5 my-4;
+}
+
+.prose p {
+  @apply mb-4;
+}
+
+@media (max-width: 640px) {
+  .prose h2 {
+    @apply text-xl;
+  }
+  
+  .prose p, .prose li {
+    @apply text-sm;
+  }
+}
+
+/* Custom Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-container {
+  background-color: var(--color-deep-purple);
+  border-radius: 0.5rem;
+  max-width: 90%;
+  width: 800px;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  padding: 0.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
